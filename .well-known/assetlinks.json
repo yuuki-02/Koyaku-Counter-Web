@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.koyaku_counter",
+      "sha256_cert_fingerprints": [
+        "TODO:リリース時にSHA256フィンガープリントを設定"
+      ]
+    }
+  }
+]

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小役カウンター - プリセット共有</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            padding: 32px;
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        p {
+            font-size: 16px;
+            color: #a0a0a0;
+            margin-bottom: 24px;
+        }
+        .store-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4a90d9;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 8px;
+        }
+    </style>
+    <script>
+        // アプリがインストールされている場合はディープリンクで開く
+        // インストールされていない場合はこのページが表示される
+        (function() {
+            var userAgent = navigator.userAgent || navigator.vendor;
+            // Android の場合、ストアへリダイレクト案内を表示
+            // iOS の場合も同様（将来対応）
+        })();
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>小役カウンター</h1>
+        <p>プリセットが共有されました。<br>アプリをインストールしてリンクを開いてください。</p>
+        <!-- ストアリンクはリリース後に追加 -->
+        <p style="font-size: 14px; color: #707070;">ストアリンクは準備中です</p>
+    </div>
+</body>
+</html>

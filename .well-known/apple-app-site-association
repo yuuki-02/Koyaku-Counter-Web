@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAM_ID.net.bayac.koyakucounter",
+        "paths": ["/share", "/share/*", "/share?*"]
+      }
+    ]
+  }
+}

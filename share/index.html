@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小役カウンター - プリセット共有</title>
+    <title>カチログ - プリセット共有</title>
+    <meta name="robots" content="noindex">
     <style>
+        :root {
+            --bg: #0D1117;
+            --card: #161B22;
+            --elevated: #21262D;
+            --border: #30363D;
+            --text: #F0F6FC;
+            --text-sub: #8B949E;
+            --accent: #3B82F6;
+            --green: #22C55E;
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,45 +28,113 @@
         }
         .container {
             text-align: center;
-            padding: 32px;
-            max-width: 400px;
+            padding: 32px 24px;
+            max-width: 420px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--green);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 12px;
         }
         h1 {
-            font-size: 24px;
-            margin-bottom: 16px;
+            font-size: 22px;
+            margin: 0 0 8px;
         }
         p {
-            font-size: 16px;
-            color: #a0a0a0;
-            margin-bottom: 24px;
+            font-size: 15px;
+            color: var(--text-sub);
+            line-height: 1.7;
+            margin: 0 0 20px;
         }
-        .store-link {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #4a90d9;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
+        .btn {
+            display: block;
+            padding: 14px 20px;
+            border-radius: 10px;
             font-size: 16px;
-            margin: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            background: var(--accent);
+            margin-bottom: 12px;
+        }
+        .btn.secondary {
+            background: var(--elevated);
+            border: 1px solid var(--border);
+        }
+        .btn.disabled {
+            background: var(--elevated);
+            color: var(--text-sub);
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+        .hidden { display: none; }
+        .note {
+            font-size: 12px;
+            color: var(--text-sub);
         }
     </style>
-    <script>
-        // アプリがインストールされている場合はディープリンクで開く
-        // インストールされていない場合はこのページが表示される
-        (function() {
-            var userAgent = navigator.userAgent || navigator.vendor;
-            // Android の場合、ストアへリダイレクト案内を表示
-            // iOS の場合も同様（将来対応）
-        })();
-    </script>
 </head>
 <body>
     <div class="container">
-        <h1>小役カウンター</h1>
-        <p>プリセットが共有されました。<br>アプリをインストールしてリンクを開いてください。</p>
-        <!-- ストアリンクはリリース後に追加 -->
-        <p style="font-size: 14px; color: #707070;">ストアリンクは準備中です</p>
+        <div class="icon">+</div>
+        <h1>プリセットが共有されました</h1>
+        <p>カチログをインストールしてから、このリンクをもう一度開くと取り込めます。</p>
+
+        <!-- Android: アプリがあれば開き、なければ Google Play へ -->
+        <div id="android" class="hidden">
+            <a id="open-app" class="btn" href="#">アプリで開く</a>
+            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.koyakucounter">Google Play で入手</a>
+        </div>
+
+        <!-- iOS: Universal Links が有効ならアプリで開く。未インストールなら App Store へ -->
+        <div id="ios" class="hidden">
+            <!-- App Store の URL は App Store Connect でアプリ作成後に差し替える -->
+            <a class="btn disabled" href="#">App Store（準備中）</a>
+        </div>
+
+        <!-- PC など -->
+        <div id="other" class="hidden">
+            <p class="note">スマートフォンでこのリンクを開いてください。</p>
+            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.koyakucounter">Google Play で入手</a>
+        </div>
+
+        <p class="note">共有リンクにはプリセットの設定だけが含まれ、カウント値は含まれません。</p>
     </div>
+
+    <script>
+        (function () {
+            var ua = navigator.userAgent || navigator.vendor || '';
+            var isAndroid = /Android/i.test(ua);
+            var isIOS = /iPhone|iPad|iPod/i.test(ua);
+            var packageName = 'net.bayac.koyakucounter';
+            var playUrl = 'https://play.google.com/store/apps/details?id=' + packageName;
+
+            if (isAndroid) {
+                // App Links の検証前でも Chrome の intent URL でアプリを直接開ける。
+                // 未インストールなら browser_fallback_url（Google Play）へ。
+                var query = location.search || '';
+                var intentUrl = 'intent://kachi-log.link/share' + query +
+                    '#Intent;scheme=https;package=' + packageName +
+                    ';S.browser_fallback_url=' + encodeURIComponent(playUrl) + ';end';
+                document.getElementById('open-app').setAttribute('href', intentUrl);
+                document.getElementById('android').classList.remove('hidden');
+            } else if (isIOS) {
+                document.getElementById('ios').classList.remove('hidden');
+            } else {
+                document.getElementById('other').classList.remove('hidden');
+            }
+        })();
+    </script>
 </body>
 </html>

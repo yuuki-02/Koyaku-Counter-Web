@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小役カウンター</title>
+    <title>カチログ - パチスロ小役カウンター</title>
+    <meta name="description" content="カチログは、パチスロの小役をカウントして設定差を確認できるシンプルなカウンターアプリです。">
     <style>
+        :root {
+            --bg: #0D1117;
+            --card: #161B22;
+            --elevated: #21262D;
+            --border: #30363D;
+            --text: #F0F6FC;
+            --text-sub: #8B949E;
+            --accent: #3B82F6;
+            --green: #22C55E;
+        }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,34 +28,103 @@
         }
         .container {
             text-align: center;
-            padding: 32px;
-            max-width: 400px;
+            padding: 32px 24px;
+            max-width: 420px;
+            width: 100%;
+            box-sizing: border-box;
         }
-        h1 {
-            font-size: 24px;
+        .icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 18px;
+            background: var(--green);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 44px;
+            font-weight: 700;
+            line-height: 1;
             margin-bottom: 16px;
         }
-        p {
-            font-size: 16px;
-            color: #a0a0a0;
-            margin-bottom: 24px;
+        h1 {
+            font-size: 26px;
+            margin: 0 0 8px;
+        }
+        .lead {
+            font-size: 15px;
+            color: var(--text-sub);
+            margin: 0 0 28px;
+            line-height: 1.7;
+        }
+        .stores {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
         }
         .store-link {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #4a90d9;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
+            display: block;
+            padding: 14px 20px;
+            border-radius: 10px;
             font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #fff;
+            background: var(--accent);
+        }
+        .store-link.disabled {
+            background: var(--elevated);
+            color: var(--text-sub);
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+        .features {
+            text-align: left;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+        .features li {
+            color: var(--text-sub);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .footer {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+        .footer a {
+            color: var(--text-sub);
+            margin: 0 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>小役カウンター</h1>
-        <p>パチスロの小役カウントを簡単に。</p>
-        <!-- ストアリンクはリリース後に追加 -->
+        <div class="icon">+</div>
+        <h1>カチログ</h1>
+        <p class="lead">パチスロの小役をカウントして<br>設定差をその場で確認できるカウンターアプリ</p>
+
+        <div class="stores">
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=net.bayac.koyakucounter">Google Play で入手</a>
+            <!-- App Store の URL は App Store Connect でアプリ作成後に差し替える -->
+            <a class="store-link disabled" href="#">App Store（準備中）</a>
+        </div>
+
+        <ul class="features">
+            <li>機種ごとにカウンターと設定差を自分で設定</li>
+            <li>通常時 / AT中 など区間ごとに集計を切り替え</li>
+            <li>プリセットを URL や QR コードで共有</li>
+            <li>オフラインでも動作</li>
+        </ul>
+
+        <p class="footer">
+            <a href="https://bayac.net/policy/">プライバシーポリシー</a>|
+            <a href="https://bayac.net/term/">利用規約</a>
+        </p>
     </div>
 </body>
 </html>

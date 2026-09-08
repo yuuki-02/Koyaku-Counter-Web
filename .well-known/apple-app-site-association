@@ -3,7 +3,7 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAM_ID.net.bayac.koyakucounter",
+        "appID": "CRJTV78FX3.net.bayac.koyakucounter",
         "paths": ["/share", "/share/*", "/share?*"]
       }
     ]

@@ -94,7 +94,7 @@
         <!-- Android: アプリがあれば開き、なければ Google Play へ -->
         <div id="android" class="hidden">
             <a id="open-app" class="btn" href="#">アプリで開く</a>
-            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.koyakucounter">Google Play で入手</a>
+            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.kachilog">Google Play で入手</a>
         </div>
 
         <!-- iOS: Universal Links が有効ならアプリで開く。未インストールなら App Store へ -->
@@ -106,7 +106,7 @@
         <!-- PC など -->
         <div id="other" class="hidden">
             <p class="note">スマートフォンでこのリンクを開いてください。</p>
-            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.koyakucounter">Google Play で入手</a>
+            <a class="btn secondary" href="https://play.google.com/store/apps/details?id=net.bayac.kachilog">Google Play で入手</a>
         </div>
 
         <p class="note">共有リンクにはプリセットの設定だけが含まれ、カウント値は含まれません。</p>
@@ -117,7 +117,7 @@
             var ua = navigator.userAgent || navigator.vendor || '';
             var isAndroid = /Android/i.test(ua);
             var isIOS = /iPhone|iPad|iPod/i.test(ua);
-            var packageName = 'net.bayac.koyakucounter';
+            var packageName = 'net.bayac.kachilog';
             var playUrl = 'https://play.google.com/store/apps/details?id=' + packageName;
 
             if (isAndroid) {

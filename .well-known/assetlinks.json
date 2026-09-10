@@ -3,7 +3,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "net.bayac.koyakucounter",
+      "package_name": "net.bayac.kachilog",
       "sha256_cert_fingerprints": [
         "TODO:Play Console のアプリ署名鍵の SHA-256 を設定（検証用にアップロード鍵の値を併記してもよい）"
       ]

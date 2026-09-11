@@ -5,7 +5,9 @@
       "namespace": "android_app",
       "package_name": "net.bayac.kachilog",
       "sha256_cert_fingerprints": [
-        "TODO:Play Console のアプリ署名鍵の SHA-256 を設定（検証用にアップロード鍵の値を併記してもよい）"
+        "12:0E:2B:06:92:41:1A:1A:9E:8E:26:20:B5:BB:1C:2F:DF:81:04:28:A7:1C:05:8E:12:B5:12:6E:4A:A5:0D:87",
+        "96:D7:D3:BB:C4:6D:F5:16:89:D1:32:E7:D9:91:33:F9:09:6E:34:A9:95:B3:20:7B:A6:6C:E9:6E:56:2B:50:78",
+        "75:AD:52:3F:61:9C:8D:31:1B:E6:26:3D:61:9E:A3:EE:DA:3C:FD:AB:8D:62:C9:4F:ED:0C:C4:04:B7:10:6C:8E"
       ]
     }
   }

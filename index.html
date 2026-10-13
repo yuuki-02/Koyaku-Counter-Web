@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="カチログ - パチスロ小役カウンター">
+    <meta property="og:description" content="パチスロの小役をタップでカウントして、確率計算と設定差の比較ができる無料アプリ。QR / URL でプリセットを共有。">
+    <meta property="og:url" content="https://kachi-log.link/">
+    <meta property="og:image" content="https://kachi-log.link/assets/icon-512.png">
+    <meta name="twitter:card" content="summary">
     <title>カチログ - パチスロ小役カウンター</title>
     <meta name="description" content="カチログは、パチスロの小役をカウントして設定差を確認できるシンプルなカウンターアプリです。">
     <style>
@@ -37,15 +45,8 @@
             width: 72px;
             height: 72px;
             border-radius: 18px;
-            background: var(--green);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 44px;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 16px;
+            display: block;
+            margin: 0 auto 16px;
         }
         h1 {
             font-size: 26px;
@@ -104,7 +105,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="icon">+</div>
+        <img class="icon" src="/assets/icon-192.png" width="72" height="72" alt="カチログ">
         <h1>カチログ</h1>
         <p class="lead">パチスロの小役をカウントして<br>設定差をその場で確認できるカウンターアプリ</p>
 
